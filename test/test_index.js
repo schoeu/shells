@@ -1,8 +1,9 @@
 /**
- * Created by memee on 2017/5/31.
+ * @file 测试文件
  */
 
 var shells = require('../index');
+
 shells({
     command: 'date'
 }).then(function (rs) {

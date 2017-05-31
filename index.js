@@ -31,17 +31,17 @@ module.exports = function (options) {
                         reject(err);
                     }
                     else {
+                        resolve({
+                            req: req,
+                            res: res,
+                            result: result
+                        });
                         if (!response) {
                             res.end(JSON.stringify({
                                 status: 0,
                                 message: 'ok'
                             }))
                         }
-                        resolve({
-                            req: req,
-                            res: res,
-                            result: result
-                        });
                     }
                 });
             }
