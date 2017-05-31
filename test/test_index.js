@@ -6,8 +6,11 @@
 var shells = require('../index');
 
 shells({
-    command: 'echo 123',
-    cb: function (rs) {
+    command: 'sh ./test/test_shell.sh',
+    cb: function (err, rs) {
+        if (err) {
+            throw err;
+        }
         var result = rs.result;
         console.log(result);
     }

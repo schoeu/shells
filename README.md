@@ -15,16 +15,10 @@ shells({
     // 服务监听的端口
     port: 8910,
     // 执行ok的
-    resolve: function (rs) {
+    cb: function (err, rs) {
+        // 如果出错, err为错误对象, 如果运行ok则为null
         // rs中有三个属性, rs.req: 请求对象, rs.res: 响应对象, rs.result: 命令执行后返回的内容
     },
-    reject: function (rs) {
-        request('http://localhost:8910/api/update', function (){
-            var result = rs.result;
-            console.log(result);
-        });
-
-    }
 });
 ```
 
