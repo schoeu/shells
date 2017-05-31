@@ -1,5 +1,5 @@
 /**
- * Created by memee on 2017/5/31.
+ * @file shells主文件
  */
 
 var http = require('http');
@@ -12,6 +12,11 @@ var defaultOps = {
     command: ''
 };
 
+/**
+ * 导出shell方法
+ * @param {Object} options 方法参数对象
+ * @return {Promise} promise对象
+ * */
 module.exports = function (options) {
     options = options || {};
     options = Object.assign({}, defaultOps, options);
