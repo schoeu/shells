@@ -23,33 +23,35 @@ module.exports = function (options) {
     var port = options.port;
     var url = options.url;
     var cwd = options.cwd;
-    var response = options.response;
+    var loop = function () {};
+    var cb = options.cb || loop;
+    var response = options.response === true;
     var command = options.command;
-    return new Promise(function (resolve, reject) {
-        http.createServer(function (req, res) {
-            var reqUrl = req.url;
-            if (reqUrl === url && command) {
-                exec(command, {
-                    cwd: cwd
-                }, function (err, result) {
-                    if (err) {
-                        reject(err);
+    http.createServer(function (req, res) {
+        var reqUrl = req.url;
+        if (reqUrl === url && command) {
+            exec(command, {
+                cwd: cwd
+            }, function (err, result) {
+                if (err) {
+                    cb(err);
+                }
+                else {
+                    var rsInfo = {
+                        req: req,
+                        res: res,
+                        result: result
+                    };
+                    if (!response) {
+                        rsInfo.res = null;
+                        res.end(JSON.stringify({
+                            status: 0,
+                            message: 'ok'
+                        }))
                     }
-                    else {
-                        resolve({
-                            req: req,
-                            res: res,
-                            result: result
-                        });
-                        if (!response) {
-                            res.end(JSON.stringify({
-                                status: 0,
-                                message: 'ok'
-                            }))
-                        }
-                    }
-                });
-            }
-        }).listen(port);
-    });
+                    cb(null, rsInfo);
+                }
+            });
+        }
+    }).listen(port);
 };

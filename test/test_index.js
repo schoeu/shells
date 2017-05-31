@@ -1,18 +1,14 @@
 /**
- * @file 测试文件
+ * @file test_index.js
+ * @description 接口测试文件
  */
 
 var shells = require('../index');
 
 shells({
-    command: 'date'
-}).then(function (rs) {
-    var res = rs.res;
-    var result = rs.result;
-    // res.end('update ok');
-    console.log(result);
-}, function (err) {
-    console.log('reject',err);
-}).catch(function (err) {
-    console.error('error',err);
+    command: 'echo 123',
+    cb: function (rs) {
+        var result = rs.result;
+        console.log(result);
+    }
 });

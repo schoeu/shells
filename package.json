@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./bin/start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive test/"
   },
   "dependencies": {},
   "repository": {
@@ -24,7 +24,5 @@
   },
   "homepage": "https://github.com/schoeu/shells#readme",
   "devDependencies": {
-    "chai": "^4.0.0",
-    "mocha": "^3.4.2"
   }
 }
