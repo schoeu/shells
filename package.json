@@ -1,0 +1,27 @@
+{
+  "name": "shells",
+  "version": "1.0.0",
+  "description": ">A slide plugin for scene project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alafe/cslide.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "shell"
+  ],
+  "author": "schoeu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/schoeu/shells"
+  },
+  "homepage": "https://github.com/schoeu/shells#readme"
+}
