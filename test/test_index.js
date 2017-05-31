@@ -5,8 +5,15 @@
 
 var shells = require('../index');
 
+// 最简形式
+shells({
+    command: 'sh ./test/test_shell.sh'
+});
+
+
 shells({
     command: 'sh ./test/test_shell.sh',
+    port: 8911,
     cb: function (err, rs) {
         if (err) {
             throw err;
